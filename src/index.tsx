@@ -5,8 +5,6 @@ import './index.css';
 
 createRoot(document.getElementById('react-child-root')!).render(
   <StrictMode>
-    {/* <Provider> */}
     <App />
-    {/* </Provider> */}
   </StrictMode>
 );
