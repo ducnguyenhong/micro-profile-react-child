@@ -2,7 +2,7 @@ import { Box, Button, Flex, Text } from '@chakra-ui/react';
 
 const Intro: React.FC = () => {
   return (
-    <Flex align="center" justify="center" direction="column" w="full" h="full" mt="-80px">
+    <Flex align="center" justify="center" direction="column" w="full" h="full" mt="-70px">
       <Box>
         <Text
           as="h1"
@@ -53,15 +53,15 @@ const Intro: React.FC = () => {
           h="56px"
           borderRadius={8}
           color="#16a34a"
-          bgColor="#e6e6e6"
+          bgColor="#e6e6e617"
           border="1px solid"
           borderColor="#16a34a"
           fontSize={18}
           fontWeight={700}
           letterSpacing="0.5px"
           transitionDuration="250ms"
-          _hover={{ bgColor: '#f7f7f8' }}
-          _active={{ bgColor: '#f7f7f8' }}
+          _hover={{ bgColor: '#e6e6e64d' }}
+          _active={{ bgColor: '#e6e6e64d' }}
         >
           About Website
         </Button>
