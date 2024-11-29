@@ -1,12 +1,10 @@
-import { Text } from '@chakra-ui/react';
+import Intro from './components/intro';
 import { Provider } from './components/ui/provider';
 
 function App() {
   return (
     <Provider>
-      <Text color="red" h="34px">
-        React - Information
-      </Text>
+      <Intro />
     </Provider>
   );
 }
