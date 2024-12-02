@@ -1,19 +1,64 @@
 import { Box, Button, Flex, Image, Text } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   DrawerBackdrop,
   DrawerBody,
   DrawerContent,
-  DrawerFooter,
+  DrawerHeader,
   DrawerRoot,
   DrawerTrigger
 } from '../../components/ui/drawer';
 
-const IntroAbout = () => {
+interface Props {
+  openAbout: boolean;
+  onClose: () => void;
+}
+
+const IntroAbout: React.FC<Props> = (props) => {
+  const { openAbout, onClose } = props;
   const [open, setOpen] = useState<boolean>(false);
 
+  const TECHNOLOGIES = [
+    {
+      title: 'Webpack Module Federation',
+      image: '/images/Webpack.webp'
+    },
+    {
+      title: 'React',
+      image: '/images/React.webp'
+    },
+    {
+      title: 'Vue',
+      image: '/images/Vue.webp'
+    },
+    {
+      title: 'Angular',
+      image: '/images/Angular.webp'
+    },
+    {
+      title: 'TypeScript',
+      image: '/images/Typescript.webp'
+    }
+  ];
+
+  useEffect(() => {
+    if (openAbout) {
+      setOpen(true);
+    }
+  }, [openAbout]);
+
   return (
-    <DrawerRoot placement="start" size="lg" open={open} onOpenChange={(e: { open: boolean }) => setOpen(e.open)}>
+    <DrawerRoot
+      placement="start"
+      size="md"
+      open={open}
+      onOpenChange={(e: { open: boolean }) => {
+        setOpen(e.open);
+        if (!e.open) {
+          onClose();
+        }
+      }}
+    >
       <DrawerBackdrop />
       <DrawerTrigger>
         <Button
@@ -36,39 +81,40 @@ const IntroAbout = () => {
       </DrawerTrigger>
       {/* @ts-ignore:next-line */}
       <DrawerContent>
-        <DrawerBody>
-          <Flex align="center" justify="center" direction="column" gap={8}>
-            <Flex align="center" justify="center" gap={4}>
-              <Image
-                src="https://nguyenhongduc.net/_vercel/image?url=%2Fimages%2Favatar.jpg&w=1536&q=100"
-                w={16}
-                h={16}
-                borderRadius="full"
-              />
-              <Box>
-                <Text fontSize={20} fontWeight={700}>
-                  Nguyen Hong Duc
-                </Text>
-                <Text fontSize={16} fontWeight={500}>
-                  Front-End Developer
-                </Text>
-              </Box>
+        <DrawerHeader>
+          <Text as="h1" fontSize={20} fontWeight={700} textTransform="uppercase">
+            About website
+          </Text>
+        </DrawerHeader>
+        <Box w="full" h="1px" bgColor="#e6e6e6" />
+        <DrawerBody pt={10}>
+          <Text textAlign="center" fontSize={16} fontWeight={600} color="#828282">
+            This website is built with micro-frontend technology, combining React, Vue, and Angular.
+          </Text>
+
+          <Image src="/images/diagram-tech.webp" w="full" h="auto" mt={10} />
+
+          <Flex direction="column" align="center" justify="center" mt={10} gap={4}>
+            <Text
+              textAlign="center"
+              color="#a6a6a6"
+              letterSpacing="2px"
+              textTransform="uppercase"
+              fontSize={13}
+              fontWeight={700}
+            >
+              Technologies
+            </Text>
+
+            <Flex align="center" gap={4}>
+              {TECHNOLOGIES.map((item) => {
+                const { title, image } = item;
+
+                return <Image key={title} src={image} w={8} h={8} title={title} />;
+              })}
             </Flex>
-
-            <Text textAlign="center" fontSize={16} fontWeight={500}>
-              Hi, I am a frontend developer with over 4.5 years of experience.
-              <br />
-              As a curious learner, I aspire to develop and contribute my skills in a professional environment.
-            </Text>
-
-            <Text textAlign="center" fontSize={16} fontWeight={500}>
-              And I am the founder of Stormik browser!
-            </Text>
           </Flex>
         </DrawerBody>
-        <DrawerFooter>
-          <Button>CV</Button>
-        </DrawerFooter>
       </DrawerContent>
     </DrawerRoot>
   );

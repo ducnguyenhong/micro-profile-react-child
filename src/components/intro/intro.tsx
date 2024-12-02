@@ -1,5 +1,5 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { type publicApiType, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { IconScrollNext } from '../../icons/common';
 import IntroAbout from './intro-about';
@@ -7,6 +7,7 @@ import IntroProfile from './intro-profile';
 
 const Intro: React.FC = () => {
   const visibility = useContext<publicApiType>(VisibilityContext);
+  const [openAbout, setOpenAbout] = useState<boolean>(false);
 
   const onGoToItem = (index: number) => {
     const { scrollToItem, getItemByIndex } = visibility;
@@ -65,8 +66,8 @@ const Intro: React.FC = () => {
       </Box>
 
       <Flex align="center" justify="center" gap={10} mt={12}>
-        <IntroProfile />
-        <IntroAbout />
+        <IntroProfile onOpenAbout={() => setOpenAbout(true)} />
+        <IntroAbout openAbout={openAbout} onClose={() => setOpenAbout(false)} />
       </Flex>
     </Flex>
   );
