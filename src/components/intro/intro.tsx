@@ -1,8 +1,40 @@
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
+import { useContext } from 'react';
+import { type publicApiType, VisibilityContext } from 'react-horizontal-scrolling-menu';
+import { IconScrollNext } from '../../icons/common';
+import IntroAbout from './intro-about';
+import IntroProfile from './intro-profile';
 
 const Intro: React.FC = () => {
+  const visibility = useContext<publicApiType>(VisibilityContext);
+
+  const onGoToItem = (index: number) => {
+    const { scrollToItem, getItemByIndex } = visibility;
+    scrollToItem(getItemByIndex(index));
+  };
+
   return (
-    <Flex align="center" justify="center" direction="column" w="full" h="full" mt="-70px">
+    <Flex
+      align="center"
+      justify="center"
+      direction="column"
+      w="100vw"
+      h="calc(100vh - 120px)"
+      mt="-70px"
+      pos="relative"
+    >
+      <Box
+        pos="absolute"
+        top="49%"
+        my="auto"
+        right={5}
+        className="scroll-next"
+        cursor="pointer"
+        onClick={() => onGoToItem(1)}
+      >
+        <IconScrollNext w="45px" h="45px" color="#FFF" />
+      </Box>
+
       <Box>
         <Text
           as="h1"
@@ -33,38 +65,8 @@ const Intro: React.FC = () => {
       </Box>
 
       <Flex align="center" justify="center" gap={10} mt={12}>
-        <Button
-          w="200px"
-          h="56px"
-          borderRadius={8}
-          color="#FFF"
-          bgColor="#16a34a"
-          fontWeight={700}
-          fontSize={18}
-          letterSpacing="0.5px"
-          transitionDuration="250ms"
-          _hover={{ bgColor: '#1cca5b' }}
-          _active={{ bgColor: '#1cca5b' }}
-        >
-          Discover Now
-        </Button>
-        <Button
-          w="200px"
-          h="56px"
-          borderRadius={8}
-          color="#16a34a"
-          bgColor="#e6e6e617"
-          border="1px solid"
-          borderColor="#16a34a"
-          fontSize={18}
-          fontWeight={700}
-          letterSpacing="0.5px"
-          transitionDuration="250ms"
-          _hover={{ bgColor: '#e6e6e64d' }}
-          _active={{ bgColor: '#e6e6e64d' }}
-        >
-          About Website
-        </Button>
+        <IntroProfile />
+        <IntroAbout />
       </Flex>
     </Flex>
   );

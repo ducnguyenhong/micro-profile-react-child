@@ -1,0 +1,33 @@
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.react-child-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+.react-child-wrapper .react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.react-child-wrapper .react-horizontal-scrolling-menu--scroll-container {
+  scrollbar-width: none;
+  /* -ms-overflow-style: 'none' */
+}
+
+.scroll-next {
+  animation: moveLeftRight 1.5s infinite;
+}
+
+@keyframes moveLeftRight {
+  0% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(-4px);
+  }
+}

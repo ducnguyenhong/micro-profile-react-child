@@ -9,11 +9,17 @@ export const IconScrollNext: React.FC<IconProps> = (props) => {
 
   return (
     <svg viewBox="0 0 24 24" fill={color} height={h} width={w} {...props}>
-      <path fill="currentColor" d="M7.757 5.636L6.343 7.05 12 12.707l5.657-5.657-1.414-1.414L12 9.88 7.757 5.636z" />
-      <path
-        fill="currentColor"
-        d="M6.343 12.707l1.414-1.414L12 15.536l4.243-4.243 1.414 1.414L12 18.364l-5.657-5.657z"
-      />
+      <path d="M5.59 7.41L7 6l6 6-6 6-1.41-1.41L10.17 12 5.59 7.41m6 0L13 6l6 6-6 6-1.41-1.41L16.17 12l-4.58-4.59z" />
+    </svg>
+  );
+};
+
+export const IconScrollPrev: React.FC<IconProps> = (props) => {
+  const { w = '1em', h = '1em', color = 'currentColor' } = props;
+
+  return (
+    <svg viewBox="0 0 24 24" fill={color} height={h} width={w} {...props}>
+      <path d="M18.41 7.41L17 6l-6 6 6 6 1.41-1.41L13.83 12l4.58-4.59m-6 0L11 6l-6 6 6 6 1.41-1.41L7.83 12l4.58-4.59z" />
     </svg>
   );
 };
