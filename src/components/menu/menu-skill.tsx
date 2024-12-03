@@ -19,7 +19,7 @@ const MenuSkill: React.FC = () => {
           transitionDuration="250ms"
           _hover={{ bgColor: '#e6e6e657' }}
         >
-          <Image src="https://cdn-icons-png.flaticon.com/128/11073/11073376.png" w={10} h={10} />
+          <Image src="https://cdn-icons-png.flaticon.com/128/5038/5038440.png" w={10} h={10} />
           <Text color="#FFF" textAlign="left" fontWeight={700} fontSize={24} mt={3}>
             Skill
           </Text>

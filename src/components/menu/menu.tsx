@@ -42,7 +42,7 @@ const Menu: React.FC = () => {
           _hover={{ bgColor: '#e6e6e657' }}
         >
           <Link href="/blog" display="block" w="full">
-            <Image src="https://cdn-icons-png.flaticon.com/128/14292/14292054.png" w={10} h={10} />
+            <Image src="https://cdn-icons-png.flaticon.com/128/1383/1383488.png" w={9} h={9} />
             <Text color="#FFF" fontWeight={700} fontSize={24} mt={3}>
               Blog
             </Text>
