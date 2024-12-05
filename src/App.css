@@ -55,14 +55,25 @@
 
 .words3 {
   opacity: 0;
-  animation: words3 1s forwards;
+  animation: zoomOut 1s forwards;
   animation-delay: 5s;
 }
 
-@keyframes words3 {
+@keyframes zoomOut {
   from {
     opacity: 0;
-    scale: 0.8;
+    scale: 0.9;
+  }
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes zoomOut07 {
+  from {
+    opacity: 0;
+    scale: 0.7;
   }
   to {
     scale: 1;
@@ -72,12 +83,14 @@
 
 .button-profile {
   opacity: 0;
+  visibility: hidden;
   animation: buttonProfile 0.5s forwards;
   animation-delay: 7s;
 }
 
 .button-about {
   opacity: 0;
+  visibility: hidden;
   animation: buttonAbout 0.5s forwards;
   animation-delay: 7s;
 }
@@ -85,9 +98,11 @@
 @keyframes buttonProfile {
   from {
     opacity: 0;
+    visibility: hidden;
     transform: translateX(-40px);
   }
   to {
+    visibility: visible;
     transform: translateX(0);
     opacity: 1;
   }
@@ -96,9 +111,11 @@
 @keyframes buttonAbout {
   from {
     opacity: 0;
+    visibility: hidden;
     transform: translateX(40px);
   }
   to {
+    visibility: visible;
     transform: translateX(0);
     opacity: 1;
   }
@@ -108,4 +125,15 @@
   opacity: 0;
   animation: display 0.5s forwards;
   animation-delay: 8.5s;
+}
+
+.section-title {
+  opacity: 0;
+  animation: display 0.5s forwards;
+}
+
+.section-wrapper {
+  opacity: 0;
+  animation: zoomOut 1s forwards;
+  animation-delay: 1s;
 }

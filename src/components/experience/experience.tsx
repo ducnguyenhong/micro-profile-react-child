@@ -2,16 +2,27 @@ import { Box, Flex, Image, Link, Text } from '@chakra-ui/react';
 import { IconDiscover } from '../../icons/common';
 import { TIMELINES } from './data';
 
-const Experience: React.FC = () => {
+const Experience: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
   const EXP_TOP = [TIMELINES[3], 'BLOCK', TIMELINES[1], 'BLOCK'];
   const EXP_BOT = ['BLOCK', TIMELINES[2], 'BLOCK', TIMELINES[0]];
+  const isActive = activeIndex === 2;
 
   return (
     <Flex align="center" justify="center" direction="column" w="100vw" h="calc(100vh - 120px)" mt="-70px" gap={5}>
-      <Text as="h1" color="#FFF" fontWeight={700} fontSize={26} letterSpacing="1px">
+      <Text
+        className={isActive ? 'section-title' : undefined}
+        opacity={0}
+        as="h1"
+        color="#FFF"
+        fontWeight={700}
+        fontSize={26}
+        letterSpacing="1px"
+      >
         Experiences
       </Text>
       <Flex
+        className={isActive ? 'section-wrapper' : undefined}
+        opacity={0}
         bgColor="#e6e6e617"
         w="800px"
         h="420px"
@@ -48,7 +59,7 @@ const Experience: React.FC = () => {
                   </Flex>
                 </Link>
 
-                <Box pos="relative" w={5} h={5} borderRadius="full" bgColor="#f2f2f2" top="49px" />
+                <Box pos="relative" w={3.5} h={3.5} borderRadius="full" bgColor="#f2f2f2" top="46px" />
                 <Text pos="relative" color="#ccc" top="6px" fontSize={12}>
                   {duration}
                 </Text>
@@ -65,7 +76,7 @@ const Experience: React.FC = () => {
             const { workplaceLogo, workplaceLink, duration, workplace } = item;
             return (
               <Flex key={index} direction="column" w="135px" align="center" pos="relative">
-                <Box pos="relative" w={5} h={5} borderRadius="full" bgColor="#f2f2f2" top="-10px" />
+                <Box pos="relative" w={3.5} h={3.5} borderRadius="full" bgColor="#f2f2f2" top="-8px" />
                 <Text pos="relative" color="#ccc" top="-4px" fontSize={12}>
                   {duration}
                 </Text>

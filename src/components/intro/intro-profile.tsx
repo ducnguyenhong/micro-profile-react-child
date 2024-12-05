@@ -23,15 +23,9 @@ const IntroProfile: React.FC<Props> = (props) => {
   return (
     <DrawerRoot size="md" open={open} onOpenChange={(e: { open: boolean }) => setOpen(e.open)}>
       <DrawerBackdrop />
-      <DrawerTrigger>
-        <ButtonGradient
-          className="button-profile"
-          w="200px"
-          h="56px"
-          fontWeight={700}
-          fontSize={18}
-          letterSpacing="0.5px"
-        >
+      {/* @ts-ignore:next-line */}
+      <DrawerTrigger className="button-profile">
+        <ButtonGradient w="200px" h="56px" fontWeight={700} fontSize={18} letterSpacing="0.5px">
           My Information
         </ButtonGradient>
       </DrawerTrigger>
@@ -40,12 +34,7 @@ const IntroProfile: React.FC<Props> = (props) => {
         <DrawerBody p={8}>
           <Flex direction="column" gap={10}>
             <Flex gap={4} align="center">
-              <Image
-                src="https://nguyenhongduc.net/_vercel/image?url=%2Fimages%2Favatar.jpg&w=1536&q=100"
-                w={16}
-                h={16}
-                borderRadius="full"
-              />
+              <Image src="/images/avatar.jpg" w={16} h={16} borderRadius="full" />
               <Box>
                 <Text fontSize={20} fontWeight={700}>
                   Nguyen Hong Duc

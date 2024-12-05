@@ -2,17 +2,43 @@ import { Flex, Grid, GridItem, Image, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { SKILLS, TABS } from './data';
 
-const Skill: React.FC = () => {
+const Skill: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
   const [activeTab, setActiveTab] = useState(TABS[0]);
   const skills = SKILLS.filter((i) => i.type.includes(activeTab.value));
+  const isActive = activeIndex === 1;
 
   return (
     <Flex align="center" justify="center" direction="column" w="100vw" h="calc(100vh - 120px)" mt="-70px" gap={5}>
-      <Text as="h1" color="#FFF" fontWeight={700} fontSize={26} letterSpacing="1px">
+      <Text
+        className={isActive ? 'section-title' : undefined}
+        opacity={0}
+        as="h1"
+        color="#FFF"
+        fontWeight={700}
+        fontSize={26}
+        letterSpacing="1px"
+      >
         Skills
       </Text>
-      <Flex bgColor="#e6e6e617" w="800px" h="420px" direction="column" px={16} py={10} gap={16} borderRadius={10}>
-        <Flex align="center" justify="center" gap={7}>
+      <Flex
+        className={isActive ? 'section-wrapper' : undefined}
+        opacity={0}
+        bgColor="#e6e6e617"
+        w="800px"
+        h="420px"
+        direction="column"
+        px={16}
+        py={10}
+        gap={16}
+        borderRadius={10}
+      >
+        <Flex
+          align="center"
+          justify="center"
+          gap={7}
+          // className={isActive ? 'skill-tabs' : undefined}
+          // opacity={0}
+        >
           {TABS.map((item) => {
             const { title, value } = item;
             const isActive = activeTab.value === value;
@@ -39,7 +65,11 @@ const Skill: React.FC = () => {
             const { name, icon, iconAlt } = item;
 
             return (
-              <GridItem key={name}>
+              <GridItem
+                key={name}
+                // className={isActive && endEffect ? 'skill-item' : undefined}
+                // opacity={isActive && endEffect ? 1 : 0}
+              >
                 <Flex mx="auto" w={12} h={12} bgColor="#ffffff30" borderRadius={4} align="center" justify="center">
                   <Image src={icon} w={7} h={7} alt={iconAlt} />
                 </Flex>

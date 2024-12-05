@@ -36,6 +36,7 @@ const Intro: React.FC = () => {
           {show1 &&
             words1.map((word, index) => (
               <Text
+                key={index}
                 as="h1"
                 fontFamily="'Inter', sans-serif"
                 color="#4ed734"
@@ -54,6 +55,7 @@ const Intro: React.FC = () => {
           {show2 &&
             words2.map((word, index) => (
               <Text
+                key={index}
                 as="h1"
                 fontFamily="'Inter', sans-serif"
                 color="#FFF"

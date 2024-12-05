@@ -1,5 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { type publicApiType, ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import 'react-horizontal-scrolling-menu/dist/styles.css';
 import './App.css';
@@ -8,7 +8,7 @@ import Intro from './components/intro';
 import Skill from './components/skill';
 import { Provider } from './components/ui/provider';
 
-const FooterScroll: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
+const FooterScroll: React.FC<{ activeIndex: number; endEffect: boolean }> = ({ activeIndex, endEffect }) => {
   const visibility = useContext<publicApiType>(VisibilityContext);
 
   const onGoToItem = (index: number) => {
@@ -17,7 +17,7 @@ const FooterScroll: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
   };
 
   return (
-    <Flex align="center" justify="center" pos="relative" top={6} className="scroll-footer">
+    <Flex align="center" justify="center" pos="relative" top={6} className={endEffect ? undefined : 'scroll-footer'}>
       <Flex align="center" justify="center" gap={1.5} px={12}>
         {[1, 2, 3].map((item, index) => {
           const isActive = activeIndex === index;
@@ -45,6 +45,7 @@ const FooterScroll: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
 
 function App() {
   const [activeComponent, setActiveComponent] = useState<number>(0); // index
+  const [endEffect, setEndEffect] = useState<boolean>(false);
 
   const COMPONENTS = [
     {
@@ -52,16 +53,20 @@ function App() {
       idx: 1
     },
     {
-      component: <Skill />,
+      component: <Skill activeIndex={activeComponent} />,
       idx: 2
     },
     {
-      component: <Experience />,
+      component: <Experience activeIndex={activeComponent} />,
       idx: 3
     }
   ];
 
   const onWheel = (apiObj: publicApiType, ev: React.WheelEvent): void => {
+    if (!endEffect) {
+      return;
+    }
+
     const isTouchpad = Math.abs(ev.deltaX) !== 0 || Math.abs(ev.deltaY) < 15;
 
     if (isTouchpad) {
@@ -76,6 +81,16 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    const checkEffect = setTimeout(() => setEndEffect(true), 8500);
+    return () => clearTimeout(checkEffect);
+  }, []);
+
+  useEffect(() => {
+    const checkEffect = setTimeout(() => setEndEffect(true), 8500);
+    return () => clearTimeout(checkEffect);
+  }, []);
+
   return (
     <Provider>
       <Box className="react-child-wrapper">
@@ -89,7 +104,7 @@ function App() {
           }}
           transitionDuration={2500}
           transitionBehavior="smooth"
-          Footer={() => <FooterScroll activeIndex={activeComponent} />}
+          Footer={() => <FooterScroll activeIndex={activeComponent} endEffect={endEffect} />}
         >
           {COMPONENTS.map((item) => {
             const { idx, component } = item;
