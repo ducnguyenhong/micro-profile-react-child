@@ -7,6 +7,7 @@ import Experience from './components/experience';
 import Intro from './components/intro';
 import Skill from './components/skill';
 import { Provider } from './components/ui/provider';
+import { useMediaQuery } from './utils/hook';
 
 const FooterScroll: React.FC<{ activeIndex: number; endEffect: boolean }> = ({ activeIndex, endEffect }) => {
   const visibility = useContext<publicApiType>(VisibilityContext);
@@ -46,6 +47,7 @@ const FooterScroll: React.FC<{ activeIndex: number; endEffect: boolean }> = ({ a
 function App() {
   const [activeComponent, setActiveComponent] = useState<number>(0); // index
   const [endEffect, setEndEffect] = useState<boolean>(false);
+  const { isMatch: isTouch, isLoading } = useMediaQuery('(max-width: 991px)');
 
   const COMPONENTS = [
     {
@@ -90,6 +92,20 @@ function App() {
     const checkEffect = setTimeout(() => setEndEffect(true), 8500);
     return () => clearTimeout(checkEffect);
   }, []);
+
+  if (isLoading) {
+    return null;
+  }
+
+  if (isTouch) {
+    return (
+      <Provider>
+        <Intro />
+        <Skill activeIndex={endEffect ? 1 : 100} />
+        <Experience activeIndex={endEffect ? 2 : 100} />
+      </Provider>
+    );
+  }
 
   return (
     <Provider>

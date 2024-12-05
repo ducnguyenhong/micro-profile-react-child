@@ -27,21 +27,20 @@ const Intro: React.FC = () => {
       justify="center"
       direction="column"
       w="100vw"
-      h="calc(100vh - 120px)"
-      mt="-70px"
+      h={{ xs: 'auto', lg: 'calc(100vh - 120px)' }}
+      mt={{ xs: '200px', lg: '-70px' }}
       pos="relative"
     >
-      <Flex direction="column" align="center">
-        <Flex direction="column" align="center" h="63px">
+      <Flex direction="column" align="center" px="20px">
+        <Flex direction="column" align="center" h="63px" lineHeight="34px">
           {show1 &&
             words1.map((word, index) => (
               <Text
                 key={index}
-                as="h1"
                 fontFamily="'Inter', sans-serif"
                 color="#4ed734"
                 fontWeight={700}
-                fontSize={42}
+                fontSize={{ xs: 35, lg: 42 }}
                 textAlign="center"
                 className="show-word"
                 style={{ animationDelay: `${index * 0.3}s` }}
@@ -51,16 +50,15 @@ const Intro: React.FC = () => {
             ))}
         </Flex>
 
-        <Flex mt={3} justify="center" h="63px" gap={2.5}>
+        <Flex mt={3} flexWrap="wrap" justify="center" h={{ xs: '75px', lg: '63px' }} gap={2.5} lineHeight="34px">
           {show2 &&
             words2.map((word, index) => (
               <Text
                 key={index}
-                as="h1"
                 fontFamily="'Inter', sans-serif"
                 color="#FFF"
                 fontWeight={700}
-                fontSize={42}
+                fontSize={{ xs: 35, lg: 42 }}
                 textAlign="center"
                 className="show-word"
                 style={{ animationDelay: `${index * 0.3}s` }}
@@ -77,7 +75,7 @@ const Intro: React.FC = () => {
         </Text>
       </Flex>
 
-      <Flex align="center" justify="center" gap={10} mt={12}>
+      <Flex direction={{ xs: 'column', lg: 'row' }} align="center" justify="center" gap={{ xs: 8, lg: 10 }} mt={12}>
         <IntroProfile onOpenAbout={() => setOpenAbout(true)} />
         <IntroAbout openAbout={openAbout} onClose={() => setOpenAbout(false)} />
       </Flex>

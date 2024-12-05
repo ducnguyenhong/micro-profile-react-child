@@ -8,35 +8,46 @@ const Experience: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
   const isActive = activeIndex === 2;
 
   return (
-    <Flex align="center" justify="center" direction="column" w="100vw" h="calc(100vh - 120px)" mt="-70px" gap={5}>
-      <Text
-        className={isActive ? 'section-title' : undefined}
-        opacity={0}
-        as="h1"
-        color="#FFF"
-        fontWeight={700}
-        fontSize={26}
-        letterSpacing="1px"
-      >
-        Experiences
-      </Text>
+    <Flex
+      align="center"
+      justify="center"
+      direction="column"
+      w="100vw"
+      h={{ xs: 'auto', lg: 'calc(100vh - 120px)' }}
+      mt={{ xs: '140px', lg: '-70px' }}
+      pb={{ xs: '100px', lg: 0 }}
+      gap={5}
+      px={{ xs: '20px', lg: 0 }}
+    >
+      <Flex direction="column" align="center" gap="4px" opacity={0} className={isActive ? 'section-title' : undefined}>
+        <Text as="h1" color="#FFF" fontWeight={700} fontSize={26} letterSpacing="1px">
+          Experiences
+        </Text>
+        <Box h="1px" bgColor="#7d7d7d" w="60px" />
+      </Flex>
       <Flex
         className={isActive ? 'section-wrapper' : undefined}
         opacity={0}
         bgColor="#e6e6e617"
-        w="800px"
-        h="420px"
+        w={{ xs: 'full', lg: '800px' }}
+        h={{ xs: 'auto', lg: '420px' }}
         direction="column"
         align="center"
         justify="center"
-        px={16}
+        px={{ xs: 4, lg: 16 }}
         py={8}
         borderRadius={10}
       >
-        <Flex align="center" gap={3} borderBottom="2px solid #a3a3a3" pb={5}>
+        <Flex
+          direction={{ xs: 'column', lg: 'row' }}
+          align="center"
+          gap={{ xs: 6, lg: 3 }}
+          borderBottom={{ xs: 'none', lg: '2px solid #a3a3a3' }}
+          pb={5}
+        >
           {EXP_TOP.map((item, index) => {
             if (typeof item === 'string') {
-              return <Box key={index} w="135px" h="full" />;
+              return <Box key={index} display={{ xs: 'none', lg: 'block' }} w="135px" h="full" />;
             }
 
             const { workplaceLogo, workplaceLink, duration, workplace } = item;
@@ -59,7 +70,15 @@ const Experience: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
                   </Flex>
                 </Link>
 
-                <Box pos="relative" w={3.5} h={3.5} borderRadius="full" bgColor="#f2f2f2" top="46px" />
+                <Box
+                  display={{ xs: 'none', lg: 'block' }}
+                  pos="relative"
+                  w={3.5}
+                  h={3.5}
+                  borderRadius="full"
+                  bgColor="#f2f2f2"
+                  top="46px"
+                />
                 <Text pos="relative" color="#ccc" top="6px" fontSize={12}>
                   {duration}
                 </Text>
@@ -67,17 +86,25 @@ const Experience: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
             );
           })}
         </Flex>
-        <Flex align="center" gap={3}>
+        <Flex direction={{ xs: 'column', lg: 'row' }} align="center" gap={{ xs: 6, lg: 3 }}>
           {EXP_BOT.map((item, index) => {
             if (typeof item === 'string') {
-              return <Box key={index} w="135px" h="full" />;
+              return <Box key={index} display={{ xs: 'none', lg: 'block' }} w="135px" h="full" />;
             }
 
             const { workplaceLogo, workplaceLink, duration, workplace } = item;
             return (
               <Flex key={index} direction="column" w="135px" align="center" pos="relative">
-                <Box pos="relative" w={3.5} h={3.5} borderRadius="full" bgColor="#f2f2f2" top="-8px" />
-                <Text pos="relative" color="#ccc" top="-4px" fontSize={12}>
+                <Box
+                  display={{ xs: 'none', lg: 'block' }}
+                  pos="relative"
+                  w={3.5}
+                  h={3.5}
+                  borderRadius="full"
+                  bgColor="#f2f2f2"
+                  top="-8px"
+                />
+                <Text display={{ xs: 'none', lg: 'block' }} pos="relative" color="#ccc" top="-4px" fontSize={12}>
                   {duration}
                 </Text>
                 <Image src={workplaceLogo} w={10} h={10} borderRadius="full" mt={5} />
@@ -96,6 +123,9 @@ const Experience: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
                     <IconDiscover w="10px" h="10px" color="#FFF" />
                   </Flex>
                 </Link>
+                <Text display={{ xs: 'block', lg: 'none' }} pos="relative" color="#ccc" top="6px" fontSize={12}>
+                  {duration}
+                </Text>
               </Flex>
             );
           })}
