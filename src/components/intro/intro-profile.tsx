@@ -24,7 +24,14 @@ const IntroProfile: React.FC<Props> = (props) => {
     <DrawerRoot size="md" open={open} onOpenChange={(e: { open: boolean }) => setOpen(e.open)}>
       <DrawerBackdrop />
       <DrawerTrigger>
-        <ButtonGradient w="200px" h="56px" fontWeight={700} fontSize={18} letterSpacing="0.5px">
+        <ButtonGradient
+          className="button-profile"
+          w="200px"
+          h="56px"
+          fontWeight={700}
+          fontSize={18}
+          letterSpacing="0.5px"
+        >
           My Information
         </ButtonGradient>
       </DrawerTrigger>

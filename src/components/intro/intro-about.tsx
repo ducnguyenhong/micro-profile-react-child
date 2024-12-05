@@ -62,19 +62,20 @@ const IntroAbout: React.FC<Props> = (props) => {
       <DrawerBackdrop />
       <DrawerTrigger>
         <Button
+          className="button-about"
           w="200px"
           h="56px"
           borderRadius={8}
-          color="#16a34a"
-          bgColor="#e6e6e617"
-          border="1px solid"
-          borderColor="#16a34a"
+          color="#16c029"
+          bgColor="transparent"
+          border="2px solid"
+          borderColor="#117a1d"
           fontSize={18}
           fontWeight={700}
           letterSpacing="0.5px"
           transitionDuration="250ms"
-          _hover={{ bgColor: '#e6e6e64d' }}
-          _active={{ bgColor: '#e6e6e64d' }}
+          _hover={{ bgColor: '#e6e6e61c' }}
+          _active={{ bgColor: '#e6e6e61c' }}
         >
           About Website
         </Button>
